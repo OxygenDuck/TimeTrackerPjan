@@ -11,7 +11,7 @@ namespace TimeTrackerPjan
 {
     public class MyApplicationContext : ApplicationContext
     {
-        System.Timers.Timer popupInterval;
+        static public System.Timers.Timer popupInterval;
         NotifyIcon _notifyIcon;
         static public List<Activity> Activities = new List<Activity>();
         static public List<Project> Projects = new List<Project>();
@@ -23,21 +23,35 @@ namespace TimeTrackerPjan
             _notifyIcon = new NotifyIcon();
             _notifyIcon.Icon = Properties.Resources.Icon;
 
+            using (SplashScreen splashScreen = new SplashScreen())
+            {
+                DialogResult result = splashScreen.ShowDialog();
+            }
+
             MenuItem ExitMenu = new MenuItem("Exit", new EventHandler(DoExit));
             MenuItem TrackMenu = new MenuItem("Track Me", new EventHandler(OpenPopup));
             MenuItem LogMenu = new MenuItem("Save Log", new EventHandler(SaveActivities));
             MenuItem ShowProjects = new MenuItem("Show Projects", new EventHandler(ShowProjectsForm));
-            ContextMenu cm = new ContextMenu(new MenuItem[] { TrackMenu, LogMenu, ShowProjects, ExitMenu });
+            MenuItem ShowOptions = new MenuItem("Options", new EventHandler(ShowOptionsForm));
+            ContextMenu cm = new ContextMenu(new MenuItem[] { TrackMenu, LogMenu, ShowProjects, ShowOptions, ExitMenu });
 
             _notifyIcon.ContextMenu = cm;
             _notifyIcon.Visible = true;
 
             LoadActivities();
 
-            popupInterval = new System.Timers.Timer(60000);
+            popupInterval = new System.Timers.Timer(Properties.Settings.Default.PopupInterval);
             popupInterval.Elapsed += TimerEnd;
             popupInterval.AutoReset = true;
             popupInterval.Enabled = true;
+        }
+
+        private void ShowOptionsForm(object sender, EventArgs e)
+        {
+            using (OptionsForm optionsForm = new OptionsForm())
+            {
+                DialogResult result = optionsForm.ShowDialog();
+            }
         }
 
         private void TimerEnd(object sender, EventArgs e)
@@ -61,6 +75,7 @@ namespace TimeTrackerPjan
                 {
                     DialogResult result = Popup.ShowDialog();
                     allowPopup = true;
+                    //TODO: Set focus to popup window (should)
                 }
             }
         }

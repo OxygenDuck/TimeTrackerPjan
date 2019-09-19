@@ -20,7 +20,6 @@ namespace TimeTrackerPjan
                 cbxProjectsPjan.Items.Add(project.name);
             }
             MyApplicationContext.dismissCounter = 0;
-            this.BringToFront();
         }
 
         private void btnSavePjan_Click(object sender, EventArgs e)

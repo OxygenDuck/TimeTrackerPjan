@@ -13,3 +13,5 @@ C:\Users\Janssen\source\repos\TimeTrackerPjan\TimeTrackerPjan\obj\Debug\TimeTrac
 C:\Users\Janssen\source\repos\TimeTrackerPjan\TimeTrackerPjan\obj\Debug\TimeTrackerPjan.frmCategoriesPjan.resources
 C:\Users\Janssen\source\repos\TimeTrackerPjan\TimeTrackerPjan\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Janssen\source\repos\TimeTrackerPjan\TimeTrackerPjan\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Janssen\source\repos\TimeTrackerPjan\TimeTrackerPjan\obj\Debug\TimeTrackerPjan.SplashScreen.resources
+C:\Users\Janssen\source\repos\TimeTrackerPjan\TimeTrackerPjan\obj\Debug\TimeTrackerPjan.OptionsForm.resources
