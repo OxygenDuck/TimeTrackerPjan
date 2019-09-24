@@ -91,5 +91,42 @@ namespace TimeTrackerPjan
                 cbxCategoryPjan.Items.Add(category.name);
             }
         }
+
+        private void tbxFilterProjectsPjan_TextChanged(object sender, EventArgs e)
+        {
+            string filter = tbxFilterProjectsPjan.Text.ToLower();
+            cbxProjectsPjan.Items.Clear();
+            foreach (Project project in MyApplicationContext.Projects)
+            {
+                if (project.name.ToLower().Contains(filter))
+                {
+                    cbxProjectsPjan.Items.Add(project.name);
+                }
+            }
+        }
+
+        private void tbxFilterCategoriesPjan_TextChanged(object sender, EventArgs e)
+        {
+            string filter = tbxFilterCategoriesPjan.Text.ToLower();
+            cbxCategoryPjan.Items.Clear();
+            Project UsedProject = null;
+
+            foreach (Project project in MyApplicationContext.Projects)
+            {
+                if (project.name == cbxProjectsPjan.Text)
+                {
+                    UsedProject = project;
+                    break;
+                }
+            }
+
+            foreach (ProjectCategory category in UsedProject.Categories)
+            {
+                if (category.name.ToLower().Contains(filter))
+                {
+                    cbxCategoryPjan.Items.Add(category.name);
+                }
+            }
+        }
     }
 }

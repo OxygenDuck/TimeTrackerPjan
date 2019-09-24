@@ -38,12 +38,15 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cbxProjectsPjan = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnRepeatPjan = new System.Windows.Forms.Button();
-            this.btnDismissMultiplePjan = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
             this.nudDismissCounterPjan = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnDismissMultiplePjan = new System.Windows.Forms.Button();
+            this.btnRepeatPjan = new System.Windows.Forms.Button();
             this.cbxCategoryPjan = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.tbxFilterProjectsPjan = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tbxFilterCategoriesPjan = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudDismissCounterPjan)).BeginInit();
             this.SuspendLayout();
@@ -143,35 +146,6 @@
             this.panel1.Size = new System.Drawing.Size(236, 137);
             this.panel1.TabIndex = 9;
             // 
-            // btnRepeatPjan
-            // 
-            this.btnRepeatPjan.Location = new System.Drawing.Point(125, 13);
-            this.btnRepeatPjan.Name = "btnRepeatPjan";
-            this.btnRepeatPjan.Size = new System.Drawing.Size(98, 34);
-            this.btnRepeatPjan.TabIndex = 7;
-            this.btnRepeatPjan.Text = "Repeat Last";
-            this.btnRepeatPjan.UseVisualStyleBackColor = true;
-            this.btnRepeatPjan.Click += new System.EventHandler(this.btnRepeatPjan_Click);
-            // 
-            // btnDismissMultiplePjan
-            // 
-            this.btnDismissMultiplePjan.Location = new System.Drawing.Point(125, 53);
-            this.btnDismissMultiplePjan.Name = "btnDismissMultiplePjan";
-            this.btnDismissMultiplePjan.Size = new System.Drawing.Size(98, 34);
-            this.btnDismissMultiplePjan.TabIndex = 8;
-            this.btnDismissMultiplePjan.Text = "Dismiss Multiple";
-            this.btnDismissMultiplePjan.UseVisualStyleBackColor = true;
-            this.btnDismissMultiplePjan.Click += new System.EventHandler(this.btnDismissMultiplePjan_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(97, 90);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(126, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Dismiss how many times?";
-            // 
             // nudDismissCounterPjan
             // 
             this.nudDismissCounterPjan.Location = new System.Drawing.Point(189, 106);
@@ -183,6 +157,35 @@
             0,
             0,
             0});
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(97, 90);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(126, 13);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Dismiss how many times?";
+            // 
+            // btnDismissMultiplePjan
+            // 
+            this.btnDismissMultiplePjan.Location = new System.Drawing.Point(125, 53);
+            this.btnDismissMultiplePjan.Name = "btnDismissMultiplePjan";
+            this.btnDismissMultiplePjan.Size = new System.Drawing.Size(98, 34);
+            this.btnDismissMultiplePjan.TabIndex = 8;
+            this.btnDismissMultiplePjan.Text = "Dismiss Multiple";
+            this.btnDismissMultiplePjan.UseVisualStyleBackColor = true;
+            this.btnDismissMultiplePjan.Click += new System.EventHandler(this.btnDismissMultiplePjan_Click);
+            // 
+            // btnRepeatPjan
+            // 
+            this.btnRepeatPjan.Location = new System.Drawing.Point(125, 13);
+            this.btnRepeatPjan.Name = "btnRepeatPjan";
+            this.btnRepeatPjan.Size = new System.Drawing.Size(98, 34);
+            this.btnRepeatPjan.TabIndex = 7;
+            this.btnRepeatPjan.Text = "Repeat Last";
+            this.btnRepeatPjan.UseVisualStyleBackColor = true;
+            this.btnRepeatPjan.Click += new System.EventHandler(this.btnRepeatPjan_Click);
             // 
             // cbxCategoryPjan
             // 
@@ -201,11 +204,39 @@
             this.label6.TabIndex = 10;
             this.label6.Text = "Specifically, the category:";
             // 
+            // tbxFilterProjectsPjan
+            // 
+            this.tbxFilterProjectsPjan.Location = new System.Drawing.Point(227, 123);
+            this.tbxFilterProjectsPjan.Name = "tbxFilterProjectsPjan";
+            this.tbxFilterProjectsPjan.Size = new System.Drawing.Size(184, 20);
+            this.tbxFilterProjectsPjan.TabIndex = 12;
+            this.tbxFilterProjectsPjan.TextChanged += new System.EventHandler(this.tbxFilterProjectsPjan_TextChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(227, 107);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(29, 13);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "Filter";
+            // 
+            // tbxFilterCategoriesPjan
+            // 
+            this.tbxFilterCategoriesPjan.Location = new System.Drawing.Point(227, 162);
+            this.tbxFilterCategoriesPjan.Name = "tbxFilterCategoriesPjan";
+            this.tbxFilterCategoriesPjan.Size = new System.Drawing.Size(184, 20);
+            this.tbxFilterCategoriesPjan.TabIndex = 14;
+            this.tbxFilterCategoriesPjan.TextChanged += new System.EventHandler(this.tbxFilterCategoriesPjan_TextChanged);
+            // 
             // frmPopupPjan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(233, 469);
+            this.ClientSize = new System.Drawing.Size(479, 469);
+            this.Controls.Add(this.tbxFilterCategoriesPjan);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.tbxFilterProjectsPjan);
             this.Controls.Add(this.cbxCategoryPjan);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.panel1);
@@ -244,6 +275,9 @@
         private System.Windows.Forms.Button btnRepeatPjan;
         private System.Windows.Forms.ComboBox cbxCategoryPjan;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox tbxFilterProjectsPjan;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox tbxFilterCategoriesPjan;
     }
 }
 

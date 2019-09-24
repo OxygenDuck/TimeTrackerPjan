@@ -46,7 +46,7 @@ namespace TimeTrackerPjan
                 MessageBox.Show("A Category name may not be blank");
                 return;
             }
-            ProjectCategory newCategory = new ProjectCategory(tbxNamePjan.Text);
+            ProjectCategory newCategory = new ProjectCategory(tbxNamePjan.Text, project);
             project.Categories.Add(newCategory);
             UpdateList();
         }
