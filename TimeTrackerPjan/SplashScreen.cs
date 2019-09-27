@@ -12,12 +12,14 @@ namespace TimeTrackerPjan
 {
     public partial class SplashScreen : Form
     {
+        //Constructor
         public SplashScreen()
         {
             InitializeComponent();
             lblVersionPjan.Text = "Version " + Program.Version.ToString();
         }
 
+        //Exit splashscreen
         private void tmrDissapearPjan_Tick(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;

@@ -8,9 +8,12 @@ namespace TimeTrackerPjan
 {
     public class Project
     {
+        //variables
         public string name;
         public List<ProjectCategory> Categories = new List<ProjectCategory>();
         public int index {get;}
+
+        //Constructor
         public Project(string Name)
         {
             name = Name;
@@ -34,10 +37,15 @@ namespace TimeTrackerPjan
         }
     }
 
+    //Category Class
     public class ProjectCategory
     {
+        //Variables
         public string name;
         public int index { get; }
+        public decimal expHours = 0, expMinutes = 0; //Expected hours and minutes
+
+        //Constructor
         public ProjectCategory(string Name, Project project)
         {
             name = Name;
@@ -58,6 +66,13 @@ namespace TimeTrackerPjan
                 }
             }
             index = newIndex;
+        }
+
+        //Set expected time
+        public void SetExpected(decimal hours, decimal minutes)
+        {
+            expHours = hours;
+            expMinutes = minutes;
         }
     }
 }

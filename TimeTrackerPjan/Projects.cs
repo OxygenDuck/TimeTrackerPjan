@@ -12,12 +12,14 @@ namespace TimeTrackerPjan
 {
     public partial class Projects : Form
     {
+        //Constructor
         public Projects()
         {
             InitializeComponent();
             UpdateList();
         }
 
+        //update listbox
         private void UpdateList()
         {
             lbxProjectsPjan.Items.Clear();
@@ -27,6 +29,7 @@ namespace TimeTrackerPjan
             }
         }
 
+        //add project
         private void btnAddPjan_Click(object sender, EventArgs e)
         {
             foreach(Project project in MyApplicationContext.Projects)
@@ -47,6 +50,7 @@ namespace TimeTrackerPjan
             UpdateList();
         }
 
+        //rename project
         private void btnRenamePjan_Click(object sender, EventArgs e)
         {
             Project projectToRename = null;
@@ -78,6 +82,7 @@ namespace TimeTrackerPjan
             }
         }
 
+        //Delete Project
         private void btnDeletePjan_Click(object sender, EventArgs e)
         {
             if (lbxProjectsPjan.SelectedIndex >= 0)
@@ -95,6 +100,7 @@ namespace TimeTrackerPjan
             }
         }
 
+        //Go to category management
         private void btnCategoriesPjan_Click(object sender, EventArgs e)
         {
             if (lbxProjectsPjan.SelectedIndex >= 0)

@@ -11,16 +11,17 @@ namespace TimeTrackerPjan
         public string name;
         public string details;
         public DateTime timeslot;
-        public string projectName;
-        public string categoryName;
+        public int projectIndex;
+        public int categoryIndex;
 
-        public Activity(string Name, string Details, string ProjectName = "", string CategoryName = "")
+        //Constructor
+        public Activity(string Name, string Details, int ProjectIndex = -1, int CategoryIndex = -1)
         {
             name = Name;
             details = Details;
             timeslot = DateTime.Now;
-            projectName = ProjectName;
-            categoryName = CategoryName;
+            projectIndex = ProjectIndex;
+            categoryIndex = CategoryIndex;
         }
     }
 }

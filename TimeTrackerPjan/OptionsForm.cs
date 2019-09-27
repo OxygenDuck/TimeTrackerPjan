@@ -12,6 +12,7 @@ namespace TimeTrackerPjan
 {
     public partial class OptionsForm : Form
     {
+        //Constructor
         public OptionsForm()
         {
             InitializeComponent();
@@ -20,11 +21,13 @@ namespace TimeTrackerPjan
             nudIntervalPjan.Value = Properties.Settings.Default.PopupInterval / 60000;
         }
 
+        //Reset values to default
         private void btnResetPjan_Click(object sender, EventArgs e)
         {
             nudIntervalPjan.Value = 30;
         }
 
+        //Save Settings
         private void btnSavePjan_Click(object sender, EventArgs e)
         {
             int popupInterval = ConvertInterval(nudIntervalPjan.Value);
@@ -34,6 +37,7 @@ namespace TimeTrackerPjan
             this.DialogResult = DialogResult.OK;
         }
 
+        //Convert time form minutes to ms
         private int ConvertInterval(decimal interval)
         {
             interval *= 60; //minutes to seconds

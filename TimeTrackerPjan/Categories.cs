@@ -12,16 +12,21 @@ namespace TimeTrackerPjan
 {
     public partial class frmCategoriesPjan : Form
     {
+        //Variables
         private Project project;
 
+        //Constructor
         public frmCategoriesPjan(Project project)
         {
             InitializeComponent();
             this.project = project;
             lblProjectNamePjan.Text = project.name;
+            lblHoursSpentPjan.Text = "";
+            lblMinutesSpentPjan.Text = "";
             UpdateList();
         }
 
+        //Update Listbox
         private void UpdateList()
         {
             lbxCategoriesPjan.Items.Clear();
@@ -31,6 +36,7 @@ namespace TimeTrackerPjan
             }
         }
 
+        //Add Category
         private void btnAddPjan_Click(object sender, EventArgs e)
         {
             foreach (ProjectCategory category in project.Categories)
@@ -51,6 +57,7 @@ namespace TimeTrackerPjan
             UpdateList();
         }
 
+        //Rename Category
         private void btnRenamePjan_Click(object sender, EventArgs e)
         {
             ProjectCategory categoryToRename = null;
@@ -82,6 +89,7 @@ namespace TimeTrackerPjan
             }
         }
 
+        //Delete Category
         private void btnDeletePjan_Click(object sender, EventArgs e)
         {
             if (lbxCategoriesPjan.SelectedIndex >= 0)
@@ -96,6 +104,72 @@ namespace TimeTrackerPjan
             else
             {
                 MessageBox.Show("No Category has been selected to delete");
+            }
+        }
+
+        //Save expected time
+        private void btnSaveExpectedPjan_Click(object sender, EventArgs e)
+        {
+            if (lbxCategoriesPjan.SelectedIndex >= 0)
+            {
+                project.Categories[lbxCategoriesPjan.SelectedIndex].SetExpected(nudHoursExpPjan.Value, nudMinutesExpPjan.Value);
+            }
+            else
+            {
+                MessageBox.Show("No Category has been selected to set expected time");
+            }
+        }
+
+        //Actions when a category is selected
+        private void lbxCategoriesPjan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ProjectCategory category = project.Categories[lbxCategoriesPjan.SelectedIndex];
+            //Set the correct values for the expected time selector
+            nudHoursExpPjan.Value = category.expHours;
+            nudMinutesExpPjan.Value = category.expMinutes;
+
+            //Get the spent time on the category
+            List<Activity> activitiesInCategory = new List<Activity>();
+            foreach (Activity activity in MyApplicationContext.Activities)
+            {
+                if (activity.projectIndex == project.index && activity.categoryIndex == category.index)
+                {
+                    activitiesInCategory.Add(activity);
+                }
+            }
+
+            int spentHours = 0;
+            int spentMinutes = 0;
+            for (int i = activitiesInCategory.Count - 1; i > 0; i--)
+            {
+                TimeSpan timespan = activitiesInCategory[i].timeslot - activitiesInCategory[i - 1].timeslot;
+                spentHours += timespan.Hours;
+                spentMinutes += timespan.Minutes;
+                //TODO: maybe check to make sure breaks between days arent counted
+            }
+            lblHoursSpentPjan.Text = spentHours.ToString();
+            lblMinutesSpentPjan.Text = spentMinutes.ToString();
+
+            //Get the difference between planned and actual time
+            int hoursDifference = spentHours - Convert.ToInt32(category.expHours);
+            int minutesDifference = spentMinutes - Convert.ToInt32(category.expMinutes);
+
+            if (hoursDifference > 0)
+            {
+                lblHoursDifPjan.Text = "+" + hoursDifference.ToString();
+            }
+            else
+            {
+                lblHoursDifPjan.Text = hoursDifference.ToString();
+            }
+
+            if (minutesDifference > 0)
+            {
+                lblMinutesDifPjan.Text = "+" + minutesDifference.ToString();
+            }
+            else
+            {
+                lblMinutesDifPjan.Text = minutesDifference.ToString();
             }
         }
     }
