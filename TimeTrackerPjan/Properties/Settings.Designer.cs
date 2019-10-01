@@ -34,5 +34,17 @@ namespace TimeTrackerPjan.Properties {
                 this["PopupInterval"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LatestSave {
+            get {
+                return ((string)(this["LatestSave"]));
+            }
+            set {
+                this["LatestSave"] = value;
+            }
+        }
     }
 }

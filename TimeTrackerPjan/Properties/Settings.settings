@@ -5,5 +5,8 @@
     <Setting Name="PopupInterval" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1800000</Value>
     </Setting>
+    <Setting Name="LatestSave" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

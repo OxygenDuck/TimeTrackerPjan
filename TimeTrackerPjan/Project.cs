@@ -35,6 +35,13 @@ namespace TimeTrackerPjan
             }
             index = newIndex;
         }
+
+        //Load Constructor !Only use from load function!
+        public Project(int Index, string Name)
+        {
+            index = Index;
+            name = Name;
+        }
     }
 
     //Category Class
@@ -66,6 +73,15 @@ namespace TimeTrackerPjan
                 }
             }
             index = newIndex;
+        }
+
+        //Load Constructor !Only use form Load function!
+        public ProjectCategory(int Index, string Name, decimal Hours, decimal Minutes)
+        {
+            index = Index;
+            name = Name;
+            expHours = Hours;
+            expMinutes = Minutes;
         }
 
         //Set expected time

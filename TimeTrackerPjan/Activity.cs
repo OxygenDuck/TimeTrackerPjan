@@ -23,5 +23,48 @@ namespace TimeTrackerPjan
             projectIndex = ProjectIndex;
             categoryIndex = CategoryIndex;
         }
+
+        //Constructor from Load
+        public Activity(DateTime Datetime, string ProjectName, string CategoryName, string Name, string Details)
+        {
+            //Set timeslot
+            timeslot = Datetime;
+
+            //Get Project
+            int arrayIndex = -1;
+            projectIndex = -1;
+            foreach (Project project in MyApplicationContext.Projects)
+            {
+                if (project.name == ProjectName)
+                {
+                    projectIndex = project.index;
+                    arrayIndex = MyApplicationContext.Projects.IndexOf(project);
+                    break;
+                }
+            }
+            if (projectIndex == -1)
+            {
+                throw new Exception("There is no project with the name " + ProjectName);
+            }
+
+            //Get Category
+            categoryIndex = -1;
+            foreach (ProjectCategory category in MyApplicationContext.Projects[arrayIndex].Categories)
+            {
+                if (category.name == CategoryName)
+                {
+                    categoryIndex = category.index;
+                    break;
+                }
+            }
+            if (categoryIndex == -1)
+            {
+                throw new Exception("There is no category with the name " + CategoryName);
+            }
+
+            //Set Name and Details
+            name = Name;
+            details = Details;
+        }
     }
 }

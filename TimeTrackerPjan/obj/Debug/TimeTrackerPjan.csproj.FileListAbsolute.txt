@@ -8,7 +8,6 @@ C:\Users\Janssen\source\repos\TimeTrackerPjan\TimeTrackerPjan\obj\Debug\TimeTrac
 C:\Users\Janssen\source\repos\TimeTrackerPjan\TimeTrackerPjan\obj\Debug\TimeTrackerPjan.csproj.CoreCompileInputs.cache
 C:\Users\Janssen\source\repos\TimeTrackerPjan\TimeTrackerPjan\obj\Debug\TimeTrackerPjan.exe
 C:\Users\Janssen\source\repos\TimeTrackerPjan\TimeTrackerPjan\obj\Debug\TimeTrackerPjan.pdb
-C:\Users\Janssen\source\repos\TimeTrackerPjan\TimeTrackerPjan\obj\Debug\TimeTrackerPjan.Manager.resources
 C:\Users\Janssen\source\repos\TimeTrackerPjan\TimeTrackerPjan\obj\Debug\TimeTrackerPjan.Projects.resources
 C:\Users\Janssen\source\repos\TimeTrackerPjan\TimeTrackerPjan\obj\Debug\TimeTrackerPjan.frmCategoriesPjan.resources
 C:\Users\Janssen\source\repos\TimeTrackerPjan\TimeTrackerPjan\bin\Debug\Newtonsoft.Json.dll

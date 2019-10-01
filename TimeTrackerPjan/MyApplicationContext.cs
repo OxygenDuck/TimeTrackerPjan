@@ -44,8 +44,28 @@ namespace TimeTrackerPjan
             _notifyIcon.Visible = true;
 
             //Load previous activities
-            //TODO: latest or select
-            LoadActivities();
+            if (Properties.Settings.Default.LatestSave != "")
+            {
+                LoadActivities(Properties.Settings.Default.LatestSave);
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("You don't seem to have a previous log, would you like to open one?", "No log found", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                    {
+                        openFileDialog.Filter = "CSV | *.csv";
+                        DialogResult dialogResult = openFileDialog.ShowDialog();
+                        if (dialogResult == DialogResult.OK)
+                        {
+                            LoadActivities(openFileDialog.FileName);
+                            Properties.Settings.Default.LatestSave = openFileDialog.FileName;
+                        }
+                    }
+                }
+            }
+            
 
             //Set timer settings
             popupInterval = new System.Timers.Timer(Properties.Settings.Default.PopupInterval);
@@ -109,16 +129,32 @@ namespace TimeTrackerPjan
             Application.Exit();
         }
 
-        //Save Activities to csv
+        //Save Projects & Activities to csv
         private void SaveActivities(object sender, EventArgs e)
         {
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
-                //TODO: Filter savefiledialog so you can only save as csv
+                saveFileDialog.Filter = "CSV | *.csv"; ;
                 DialogResult result = saveFileDialog.ShowDialog();
                 if (result == DialogResult.OK)
                 {
                     StringBuilder csv = new StringBuilder();
+
+                    csv.AppendLine("Projects");
+                    //Write all projects
+                    foreach (Project project in Projects)
+                    {
+                        csv.AppendLine("p," + project.index.ToString() + "," + project.name);
+                        foreach (ProjectCategory category in project.Categories)
+                        {
+                            string cIndex = category.index.ToString(), cName = category.name;
+                            string cHours = category.expHours.ToString(), cMinutes = category.expMinutes.ToString();
+                            csv.AppendLine(string.Format("c,{0},{1},{2},{3}",cIndex, cName, cHours, cMinutes));
+                        }
+                    }
+
+                    //Write all activities
+                    csv.AppendLine("Activities");
                     foreach (Activity activity in Activities)
                     {
                         //Get all the data in an activity
@@ -133,15 +169,9 @@ namespace TimeTrackerPjan
                         csv.AppendLine(newline);
                     }
                     File.WriteAllText(saveFileDialog.FileName, csv.ToString());
+                    Properties.Settings.Default.LatestSave = saveFileDialog.FileName;
                 }
             }
-
-            ////json.net
-            //using (StreamWriter writeFile = new StreamWriter(@"C:\Users\Janssen\Desktop\timetrackertest\activities.json"))
-            //{
-            //    JsonSerializer serializer = new JsonSerializer();
-            //    serializer.Serialize(writeFile, Activities);
-            //}
         }
 
         //Get project name
@@ -196,11 +226,46 @@ namespace TimeTrackerPjan
         }
 
         //Load Activities
-        private void LoadActivities()
+        private void LoadActivities(string FilePath)
         {
-            //json.net
-            string reader = System.IO.File.ReadAllText(@"C:\Users\Janssen\Desktop\timetrackertest\activities.json");
-            Activities = JsonConvert.DeserializeObject<List<Activity>>(reader);
+            Projects.Clear();
+
+            Project newProject = null;
+            int newProjectIndex = 0;
+            bool writeActivities = false;
+            using (StreamReader reader = new StreamReader(FilePath))
+            {
+                while (!reader.EndOfStream)
+                {
+                    string line = reader.ReadLine();
+                    string[] values = line.Split(',');
+
+                    if (!writeActivities)
+                    {
+                        switch (values[0])
+                        {
+                            case "Projects": writeActivities = false; break; //start writing projects
+                            case "p":
+                                //Add project
+                                //Index, Name
+                                newProject = new Project(Convert.ToInt32(values[1]), values[2]);
+                                Projects.Add(newProject);
+                                newProjectIndex = Projects.IndexOf(newProject); break;
+                            case "c":
+                                //Add category to project
+                                //Index, Name, Hours, Minutes
+                                Projects[newProjectIndex].Categories.Add(new ProjectCategory(Convert.ToInt32(values[1]), values[2], Convert.ToDecimal(values[3]) , Convert.ToDecimal(values[4]))); break;
+                            case "Activities": writeActivities = true; break; //start writing activities
+                        }
+                    }
+                    else
+                    {
+                        //Add activity
+                        //Date & time, Project, Category, Name, Details
+                        Activities.Add(new Activity(DateTime.Parse(values[0]), values[1], values[2], values[3], values[4]));
+                    }
+                }
+            }
         }
     }
 }
