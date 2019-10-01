@@ -24,12 +24,14 @@ namespace TimeTrackerPjan
         //Reset values to default
         private void btnResetPjan_Click(object sender, EventArgs e)
         {
+            Log.Write("Reset default settings");
             nudIntervalPjan.Value = 30;
         }
 
         //Save Settings
         private void btnSavePjan_Click(object sender, EventArgs e)
         {
+            Log.Write("Saving settings");
             int popupInterval = ConvertInterval(nudIntervalPjan.Value);
             MyApplicationContext.popupInterval.Interval = popupInterval;
             Properties.Settings.Default.PopupInterval = popupInterval;
@@ -43,6 +45,12 @@ namespace TimeTrackerPjan
             interval *= 60; //minutes to seconds
             interval *= 1000; //seconds to ms
             return Convert.ToInt32(interval);
+        }
+
+        private void btnSaveLogPjan_Click(object sender, EventArgs e)
+        {
+            Log.Write("Saving log");
+            Log.Save();
         }
     }
 }

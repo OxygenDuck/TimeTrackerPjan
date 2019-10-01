@@ -67,12 +67,14 @@ namespace TimeTrackerPjan
             }
             
             MyApplicationContext.Activities.Add(newActivity);
+            Log.Write("Logged a new Activity: '" + newActivity.name + "'");
             this.DialogResult = DialogResult.OK;
         }
 
         //Dismiss popup
         private void btnDismissPjan_Click(object sender, EventArgs e)
         {
+            Log.Write("Dismissed Popup");
             this.DialogResult = DialogResult.Cancel;
         }
 
@@ -84,6 +86,7 @@ namespace TimeTrackerPjan
                 Activity last = MyApplicationContext.Activities.Last();
                 Activity newActivity = new Activity(last.name, last.details, last.projectIndex, last.categoryIndex);
                 MyApplicationContext.Activities.Add(newActivity);
+                Log.Write("Repeated Last Activity");
                 this.DialogResult = DialogResult.OK;
             }
             else
@@ -96,6 +99,7 @@ namespace TimeTrackerPjan
         private void btnDismissMultiplePjan_Click(object sender, EventArgs e)
         {
             MyApplicationContext.dismissCounter = Convert.ToInt32(nudDismissCounterPjan.Value);
+            Log.Write("Dismissed multiple popups");
             this.DialogResult = DialogResult.Cancel;
         }
 

@@ -23,15 +23,18 @@ namespace TimeTrackerPjan
         public MyApplicationContext()
         {
             //Set icon
+            Log.Write("Setting tray Icon");
             _notifyIcon = new NotifyIcon();
             _notifyIcon.Icon = Properties.Resources.Icon;
 
+            Log.Write("Show splashscreen");
             //Show splashscreen
             using (SplashScreen splashScreen = new SplashScreen())
             {
                 DialogResult result = splashScreen.ShowDialog();
             }
 
+            Log.Write("Set the ContextMenu");
             //Set the traymenu
             MenuItem ExitMenu = new MenuItem("Exit", new EventHandler(DoExit));
             MenuItem TrackMenu = new MenuItem("Track Me", new EventHandler(OpenPopup));
@@ -43,6 +46,7 @@ namespace TimeTrackerPjan
             _notifyIcon.ContextMenu = cm;
             _notifyIcon.Visible = true;
 
+            Log.Write("Ask to load previous activities");
             //Load previous activities
             if (Properties.Settings.Default.LatestSave != "")
             {
@@ -65,9 +69,9 @@ namespace TimeTrackerPjan
                     }
                 }
             }
-            
 
             //Set timer settings
+            Log.Write("Set the timer for popups");
             popupInterval = new System.Timers.Timer(Properties.Settings.Default.PopupInterval);
             popupInterval.Elapsed += TimerEnd;
             popupInterval.AutoReset = true;
@@ -77,6 +81,7 @@ namespace TimeTrackerPjan
         //Show options
         private void ShowOptionsForm(object sender, EventArgs e)
         {
+            Log.Write("Opening options");
             using (OptionsForm optionsForm = new OptionsForm())
             {
                 DialogResult result = optionsForm.ShowDialog();
@@ -101,6 +106,7 @@ namespace TimeTrackerPjan
         {
             if (allowPopup)
             {
+                Log.Write("Opening Popup");
                 allowPopup = false;
                 using (frmPopupPjan Popup = new frmPopupPjan())
                 {
@@ -114,6 +120,7 @@ namespace TimeTrackerPjan
         //Show projects
         private void ShowProjectsForm(object sender, EventArgs e)
         {
+            Log.Write("Opening Projects");
             popupInterval.Enabled = false;
             using (Projects ProjectsForm = new Projects())
             {
@@ -125,6 +132,7 @@ namespace TimeTrackerPjan
         //Exit application
         private void DoExit(object sender, EventArgs e)
         {
+            Log.Write("Exit Application");
             _notifyIcon.Visible = false;
             Application.Exit();
         }
@@ -134,10 +142,11 @@ namespace TimeTrackerPjan
         {
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
-                saveFileDialog.Filter = "CSV | *.csv"; ;
+                saveFileDialog.Filter = "CSV | *.csv";
                 DialogResult result = saveFileDialog.ShowDialog();
                 if (result == DialogResult.OK)
                 {
+                    Log.Write("Saving data to '" + saveFileDialog.FileName + "'");
                     StringBuilder csv = new StringBuilder();
 
                     csv.AppendLine("Projects");
@@ -228,6 +237,7 @@ namespace TimeTrackerPjan
         //Load Activities
         private void LoadActivities(string FilePath)
         {
+            Log.Write("Load file '" + FilePath + "'");
             Projects.Clear();
 
             Project newProject = null;
@@ -250,11 +260,13 @@ namespace TimeTrackerPjan
                                 //Index, Name
                                 newProject = new Project(Convert.ToInt32(values[1]), values[2]);
                                 Projects.Add(newProject);
-                                newProjectIndex = Projects.IndexOf(newProject); break;
+                                newProjectIndex = Projects.IndexOf(newProject);
+                                Log.Write("Added Project '" + newProject.name + "'"); break;
                             case "c":
                                 //Add category to project
                                 //Index, Name, Hours, Minutes
-                                Projects[newProjectIndex].Categories.Add(new ProjectCategory(Convert.ToInt32(values[1]), values[2], Convert.ToDecimal(values[3]) , Convert.ToDecimal(values[4]))); break;
+                                Projects[newProjectIndex].Categories.Add(new ProjectCategory(Convert.ToInt32(values[1]), values[2], Convert.ToDecimal(values[3]) , Convert.ToDecimal(values[4])));
+                                Log.Write("Added new Category '" + values[2] + "'"); break;
                             case "Activities": writeActivities = true; break; //start writing activities
                         }
                     }
@@ -263,6 +275,7 @@ namespace TimeTrackerPjan
                         //Add activity
                         //Date & time, Project, Category, Name, Details
                         Activities.Add(new Activity(DateTime.Parse(values[0]), values[1], values[2], values[3], values[4]));
+                        Log.Write("Added new activity '" + values[3] + "'");
                     }
                 }
             }

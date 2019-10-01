@@ -47,6 +47,7 @@ namespace TimeTrackerPjan
             }
             Project newProject = new Project(tbxNamePjan.Text);
             MyApplicationContext.Projects.Add(newProject);
+            Log.Write("Created a new project: '" + newProject.name + "'");
             UpdateList();
         }
 
@@ -71,6 +72,7 @@ namespace TimeTrackerPjan
                     }
                 }
 
+                Log.Write("Renamed Project '" + projectToRename.name + "' to '" + tbxNamePjan.Text + "'");
                 projectToRename.name = tbxNamePjan.Text;
                 selectedIndex = lbxProjectsPjan.SelectedIndex;
                 UpdateList();
@@ -90,6 +92,7 @@ namespace TimeTrackerPjan
                 DialogResult confirmation = MessageBox.Show("Are you sure you want to remove this project?", "Hold Up", MessageBoxButtons.YesNo);
                 if (confirmation == DialogResult.Yes)
                 {
+                    Log.Write("Removed project '" + MyApplicationContext.Projects[lbxProjectsPjan.SelectedIndex].name + "'");
                     MyApplicationContext.Projects.RemoveAt(lbxProjectsPjan.SelectedIndex);
                     UpdateList();
                 }
@@ -107,6 +110,7 @@ namespace TimeTrackerPjan
             {
                 using (frmCategoriesPjan categoryManager = new frmCategoriesPjan(MyApplicationContext.Projects[lbxProjectsPjan.SelectedIndex]))
                 {
+                    Log.Write("Opened Categories for Project '" + MyApplicationContext.Projects[lbxProjectsPjan.SelectedIndex].name + "'");
                     DialogResult result = categoryManager.ShowDialog();
                 }
             }

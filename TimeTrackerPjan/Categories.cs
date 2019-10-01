@@ -54,6 +54,7 @@ namespace TimeTrackerPjan
             }
             ProjectCategory newCategory = new ProjectCategory(tbxNamePjan.Text, project);
             project.Categories.Add(newCategory);
+            Log.Write("Category added: '" + tbxNamePjan.Text + "'");
             UpdateList();
         }
 
@@ -78,6 +79,7 @@ namespace TimeTrackerPjan
                     }
                 }
 
+                Log.Write("Renamed Category '" + categoryToRename.name + "' to '" + tbxNamePjan.Text + "'");
                 categoryToRename.name = tbxNamePjan.Text;
                 selectedIndex = lbxCategoriesPjan.SelectedIndex;
                 UpdateList();
@@ -97,6 +99,7 @@ namespace TimeTrackerPjan
                 DialogResult confirmation = MessageBox.Show("Are you sure you want to remove this category?", "Hold Up", MessageBoxButtons.YesNo);
                 if (confirmation == DialogResult.Yes)
                 {
+                    Log.Write("Removed Category '" + project.Categories[lbxCategoriesPjan.SelectedIndex].name + "'");
                     project.Categories.RemoveAt(lbxCategoriesPjan.SelectedIndex);
                     UpdateList();
                 }
@@ -113,6 +116,8 @@ namespace TimeTrackerPjan
             if (lbxCategoriesPjan.SelectedIndex >= 0)
             {
                 project.Categories[lbxCategoriesPjan.SelectedIndex].SetExpected(nudHoursExpPjan.Value, nudMinutesExpPjan.Value);
+                Log.Write("Updated expected time for category '" + project.Categories[lbxCategoriesPjan.SelectedIndex].name + "'");
+                MessageBox.Show("Expected time has been saved");
             }
             else
             {

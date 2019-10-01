@@ -32,6 +32,7 @@
             this.btnSavePjan = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.nudIntervalPjan = new System.Windows.Forms.NumericUpDown();
+            this.btnSaveLogPjan = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudIntervalPjan)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,11 +77,22 @@
             0,
             0});
             // 
+            // btnSaveLogPjan
+            // 
+            this.btnSaveLogPjan.Location = new System.Drawing.Point(12, 218);
+            this.btnSaveLogPjan.Name = "btnSaveLogPjan";
+            this.btnSaveLogPjan.Size = new System.Drawing.Size(81, 31);
+            this.btnSaveLogPjan.TabIndex = 4;
+            this.btnSaveLogPjan.Text = "Save Log";
+            this.btnSaveLogPjan.UseVisualStyleBackColor = true;
+            this.btnSaveLogPjan.Click += new System.EventHandler(this.btnSaveLogPjan_Click);
+            // 
             // OptionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.btnSaveLogPjan);
             this.Controls.Add(this.nudIntervalPjan);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSavePjan);
@@ -100,5 +112,6 @@
         private System.Windows.Forms.Button btnSavePjan;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown nudIntervalPjan;
+        private System.Windows.Forms.Button btnSaveLogPjan;
     }
 }

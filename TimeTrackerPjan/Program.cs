@@ -21,9 +21,24 @@ namespace TimeTrackerPjan
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MyApplicationContext());
+            try
+            {
+                Log.Write("TimeTracker by Peter Janssen");
+                Log.Write("Application Version " + Version.ToString());
+                Log.Write("Start the application");
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new MyApplicationContext());
+            }
+            catch (Exception exception)
+            {
+                Log.Write(exception.ToString());
+                DialogResult WriteLog = MessageBox.Show("An unexpected error has occured. Would you like to save a log?", "Error", MessageBoxButtons.YesNo);
+                if (WriteLog == DialogResult.Yes)
+                {
+                    Log.Save();
+                }
+            }
         }
     }
 }
