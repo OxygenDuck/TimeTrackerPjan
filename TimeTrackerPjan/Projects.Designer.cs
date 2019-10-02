@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Projects));
             this.lbxProjectsPjan = new System.Windows.Forms.ListBox();
             this.tbxNamePjan = new System.Windows.Forms.TextBox();
             this.btnRenamePjan = new System.Windows.Forms.Button();
@@ -102,6 +103,7 @@
             this.Controls.Add(this.btnRenamePjan);
             this.Controls.Add(this.tbxNamePjan);
             this.Controls.Add(this.lbxProjectsPjan);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Projects";
             this.Text = "Projects";
             this.ResumeLayout(false);

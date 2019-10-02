@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -51,6 +52,20 @@ namespace TimeTrackerPjan
         {
             Log.Write("Saving log");
             Log.Save();
+        }
+
+        private void mniVersionPjan_Click(object sender, EventArgs e)
+        {
+            //Open release notes
+            Log.Write("Open README with releasenotes");
+            Process.Start("..\\..\\Resources\\README.txt");
+        }
+
+        private void mniManualPjan_Click(object sender, EventArgs e)
+        {
+            //Open user manual
+            Log.Write("Open user manual");
+            Process.Start("..\\..\\Resources\\Manual.pdf");
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCategoriesPjan));
             this.label1 = new System.Windows.Forms.Label();
             this.lblProjectNamePjan = new System.Windows.Forms.Label();
             this.lbxCategoriesPjan = new System.Windows.Forms.ListBox();
@@ -36,6 +37,15 @@
             this.btnRenamePjan = new System.Windows.Forms.Button();
             this.tbxNamePjan = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblMinutesDifPjan = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lblHoursDifPjan = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblMinutesSpentPjan = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblHoursSpentPjan = new System.Windows.Forms.Label();
             this.btnSaveExpectedPjan = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -43,15 +53,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.nudHoursExpPjan = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
-            this.lblHoursSpentPjan = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.lblMinutesSpentPjan = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.lblMinutesDifPjan = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.lblHoursDifPjan = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudMinutesExpPjan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHoursExpPjan)).BeginInit();
@@ -146,6 +147,87 @@
             this.panel1.Size = new System.Drawing.Size(320, 250);
             this.panel1.TabIndex = 9;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(132, 209);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(44, 13);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "Minutes";
+            // 
+            // lblMinutesDifPjan
+            // 
+            this.lblMinutesDifPjan.AutoSize = true;
+            this.lblMinutesDifPjan.Location = new System.Drawing.Point(3, 209);
+            this.lblMinutesDifPjan.Name = "lblMinutesDifPjan";
+            this.lblMinutesDifPjan.Size = new System.Drawing.Size(16, 13);
+            this.lblMinutesDifPjan.TabIndex = 14;
+            this.lblMinutesDifPjan.Text = "...";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(132, 188);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(35, 13);
+            this.label10.TabIndex = 13;
+            this.label10.Text = "Hours";
+            // 
+            // lblHoursDifPjan
+            // 
+            this.lblHoursDifPjan.AutoSize = true;
+            this.lblHoursDifPjan.Location = new System.Drawing.Point(3, 188);
+            this.lblHoursDifPjan.Name = "lblHoursDifPjan";
+            this.lblHoursDifPjan.Size = new System.Drawing.Size(16, 13);
+            this.lblHoursDifPjan.TabIndex = 12;
+            this.lblHoursDifPjan.Text = "...";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(3, 168);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(56, 13);
+            this.label12.TabIndex = 11;
+            this.label12.Text = "Difference";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(132, 147);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(44, 13);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Minutes";
+            // 
+            // lblMinutesSpentPjan
+            // 
+            this.lblMinutesSpentPjan.AutoSize = true;
+            this.lblMinutesSpentPjan.Location = new System.Drawing.Point(3, 147);
+            this.lblMinutesSpentPjan.Name = "lblMinutesSpentPjan";
+            this.lblMinutesSpentPjan.Size = new System.Drawing.Size(16, 13);
+            this.lblMinutesSpentPjan.TabIndex = 9;
+            this.lblMinutesSpentPjan.Text = "...";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(132, 126);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Hours";
+            // 
+            // lblHoursSpentPjan
+            // 
+            this.lblHoursSpentPjan.AutoSize = true;
+            this.lblHoursSpentPjan.Location = new System.Drawing.Point(3, 126);
+            this.lblHoursSpentPjan.Name = "lblHoursSpentPjan";
+            this.lblHoursSpentPjan.Size = new System.Drawing.Size(16, 13);
+            this.lblHoursSpentPjan.TabIndex = 7;
+            this.lblHoursSpentPjan.Text = "...";
+            // 
             // btnSaveExpectedPjan
             // 
             this.btnSaveExpectedPjan.Location = new System.Drawing.Point(6, 78);
@@ -211,87 +293,6 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Expected time for category";
             // 
-            // lblHoursSpentPjan
-            // 
-            this.lblHoursSpentPjan.AutoSize = true;
-            this.lblHoursSpentPjan.Location = new System.Drawing.Point(3, 126);
-            this.lblHoursSpentPjan.Name = "lblHoursSpentPjan";
-            this.lblHoursSpentPjan.Size = new System.Drawing.Size(16, 13);
-            this.lblHoursSpentPjan.TabIndex = 7;
-            this.lblHoursSpentPjan.Text = "...";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(132, 126);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Hours";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(132, 147);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(44, 13);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Minutes";
-            // 
-            // lblMinutesSpentPjan
-            // 
-            this.lblMinutesSpentPjan.AutoSize = true;
-            this.lblMinutesSpentPjan.Location = new System.Drawing.Point(3, 147);
-            this.lblMinutesSpentPjan.Name = "lblMinutesSpentPjan";
-            this.lblMinutesSpentPjan.Size = new System.Drawing.Size(16, 13);
-            this.lblMinutesSpentPjan.TabIndex = 9;
-            this.lblMinutesSpentPjan.Text = "...";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(132, 209);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(44, 13);
-            this.label8.TabIndex = 15;
-            this.label8.Text = "Minutes";
-            // 
-            // lblMinutesDifPjan
-            // 
-            this.lblMinutesDifPjan.AutoSize = true;
-            this.lblMinutesDifPjan.Location = new System.Drawing.Point(3, 209);
-            this.lblMinutesDifPjan.Name = "lblMinutesDifPjan";
-            this.lblMinutesDifPjan.Size = new System.Drawing.Size(16, 13);
-            this.lblMinutesDifPjan.TabIndex = 14;
-            this.lblMinutesDifPjan.Text = "...";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(132, 188);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(35, 13);
-            this.label10.TabIndex = 13;
-            this.label10.Text = "Hours";
-            // 
-            // lblHoursDifPjan
-            // 
-            this.lblHoursDifPjan.AutoSize = true;
-            this.lblHoursDifPjan.Location = new System.Drawing.Point(3, 188);
-            this.lblHoursDifPjan.Name = "lblHoursDifPjan";
-            this.lblHoursDifPjan.Size = new System.Drawing.Size(16, 13);
-            this.lblHoursDifPjan.TabIndex = 12;
-            this.lblHoursDifPjan.Text = "...";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(3, 168);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(56, 13);
-            this.label12.TabIndex = 11;
-            this.label12.Text = "Difference";
-            // 
             // frmCategoriesPjan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -305,6 +306,7 @@
             this.Controls.Add(this.lbxCategoriesPjan);
             this.Controls.Add(this.lblProjectNamePjan);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCategoriesPjan";
             this.Text = "Categories";
             this.panel1.ResumeLayout(false);

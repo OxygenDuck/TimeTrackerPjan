@@ -147,10 +147,14 @@ namespace TimeTrackerPjan
             int spentMinutes = 0;
             for (int i = activitiesInCategory.Count - 1; i > 0; i--)
             {
-                TimeSpan timespan = activitiesInCategory[i].timeslot - activitiesInCategory[i - 1].timeslot;
-                spentHours += timespan.Hours;
-                spentMinutes += timespan.Minutes;
-                //TODO: maybe check to make sure breaks between days arent counted
+                //Check to make sure breaks between days arent counted
+                //! if this is deemed too buggy, change it accordingly
+                if (activitiesInCategory[i].timeslot.Date == activitiesInCategory[i - 1].timeslot.Date)
+                {
+                    TimeSpan timespan = activitiesInCategory[i].timeslot - activitiesInCategory[i - 1].timeslot;
+                    spentHours += timespan.Hours;
+                    spentMinutes += timespan.Minutes;
+                }
             }
             lblHoursSpentPjan.Text = spentHours.ToString();
             lblMinutesSpentPjan.Text = spentMinutes.ToString();
