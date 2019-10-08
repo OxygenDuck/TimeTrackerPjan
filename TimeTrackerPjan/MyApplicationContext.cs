@@ -13,7 +13,7 @@ namespace TimeTrackerPjan
     {
         //Variables, Lists and Onjects
         static public System.Timers.Timer popupInterval;
-        NotifyIcon _notifyIcon;
+        NotifyIcon NotifyIcon;
         static public List<Activity> Activities = new List<Activity>();
         static public List<Project> Projects = new List<Project>();
         static public int dismissCounter = 0;
@@ -24,8 +24,10 @@ namespace TimeTrackerPjan
         {
             //Set icon
             Log.Write("Setting tray Icon");
-            _notifyIcon = new NotifyIcon();
-            _notifyIcon.Icon = Properties.Resources.Icon;
+            NotifyIcon = new NotifyIcon
+            {
+                Icon = Properties.Resources.Icon
+            };
 
             Log.Write("Show splashscreen");
             //Show splashscreen
@@ -39,12 +41,13 @@ namespace TimeTrackerPjan
             MenuItem ExitMenu = new MenuItem("Exit", new EventHandler(DoExit));
             MenuItem TrackMenu = new MenuItem("Track Me", new EventHandler(OpenPopup));
             MenuItem LogMenu = new MenuItem("Save Log", new EventHandler(SaveActivities));
+            MenuItem LoadMenu = new MenuItem("Load Log", new EventHandler(LoadActivities));
             MenuItem ShowProjects = new MenuItem("Show Projects", new EventHandler(ShowProjectsForm));
             MenuItem ShowOptions = new MenuItem("Options", new EventHandler(ShowOptionsForm));
-            ContextMenu cm = new ContextMenu(new MenuItem[] { TrackMenu, LogMenu, ShowProjects, ShowOptions, ExitMenu });
+            ContextMenu cm = new ContextMenu(new MenuItem[] { TrackMenu, LogMenu, LoadMenu, ShowProjects, ShowOptions, ExitMenu });
 
-            _notifyIcon.ContextMenu = cm;
-            _notifyIcon.Visible = true;
+            NotifyIcon.ContextMenu = cm;
+            NotifyIcon.Visible = true;
 
             Log.Write("Ask to load previous activities");
             //Load previous activities
@@ -65,6 +68,8 @@ namespace TimeTrackerPjan
                         {
                             LoadActivities(openFileDialog.FileName);
                             Properties.Settings.Default.LatestSave = openFileDialog.FileName;
+                            Properties.Settings.Default.Save();
+                            Properties.Settings.Default.Reload();
                         }
                     }
                 }
@@ -76,6 +81,13 @@ namespace TimeTrackerPjan
             popupInterval.Elapsed += TimerEnd;
             popupInterval.AutoReset = true;
             popupInterval.Enabled = true;
+
+            //Ask for initial activity
+            DialogResult initialActivity = MessageBox.Show("Would you like to log an initial activity?", "Initial Activity", MessageBoxButtons.YesNo);
+            if (initialActivity == DialogResult.Yes)
+            {
+                OpenPopup(null, null);
+            }
         }
 
         //Show options
@@ -133,7 +145,7 @@ namespace TimeTrackerPjan
         private void DoExit(object sender, EventArgs e)
         {
             Log.Write("Exit Application");
-            _notifyIcon.Visible = false;
+            NotifyIcon.Visible = false;
             Application.Exit();
         }
 
@@ -158,7 +170,7 @@ namespace TimeTrackerPjan
                         {
                             string cIndex = category.index.ToString(), cName = category.name;
                             string cHours = category.expHours.ToString(), cMinutes = category.expMinutes.ToString();
-                            csv.AppendLine(string.Format("c,{0},{1},{2},{3}",cIndex, cName, cHours, cMinutes));
+                            csv.AppendLine(string.Format("c,{0},{1},{2},{3}", cIndex, cName, cHours, cMinutes));
                         }
                     }
 
@@ -168,10 +180,10 @@ namespace TimeTrackerPjan
                     {
                         //Get all the data in an activity
                         string time = activity.timeslot.ToString();
-                        string project = GetProjectFromId(activity.projectIndex);
-                        string projectCategory = GetCategoryFromId(project, activity.categoryIndex);
-                        string name = activity.name;
-                        string details = activity.details;
+                        string project = FormatSaveString(GetProjectFromId(activity.projectIndex));
+                        string projectCategory = FormatSaveString(GetCategoryFromId(project, activity.categoryIndex));
+                        string name = FormatSaveString(activity.name);
+                        string details = FormatSaveString(activity.details);
 
                         //write to csv file
                         string newline = string.Format("{0},{1},{2},{3},{4}", time, project, projectCategory, name, details);
@@ -179,8 +191,18 @@ namespace TimeTrackerPjan
                     }
                     File.WriteAllText(saveFileDialog.FileName, csv.ToString());
                     Properties.Settings.Default.LatestSave = saveFileDialog.FileName;
+                    Properties.Settings.Default.Save();
+                    Properties.Settings.Default.Reload();
                 }
             }
+        }
+
+        private string FormatSaveString(string input)
+        {
+            string Output = input.Replace(',', ' ');
+            Output = Output.Replace('\n', ' ');
+
+            return Output;
         }
 
         //Get project name
@@ -243,40 +265,72 @@ namespace TimeTrackerPjan
             Project newProject = null;
             int newProjectIndex = 0;
             bool writeActivities = false;
-            using (StreamReader reader = new StreamReader(FilePath))
-            {
-                while (!reader.EndOfStream)
-                {
-                    string line = reader.ReadLine();
-                    string[] values = line.Split(',');
+            bool showWarning = false;
 
-                    if (!writeActivities)
+            try
+            {
+                using (StreamReader reader = new StreamReader(FilePath))
+                {
+                    while (!reader.EndOfStream)
                     {
-                        switch (values[0])
+                        string line = reader.ReadLine();
+                        string[] values = line.Split(',');
+
+                        if (!writeActivities)
                         {
-                            case "Projects": writeActivities = false; break; //start writing projects
-                            case "p":
-                                //Add project
-                                //Index, Name
-                                newProject = new Project(Convert.ToInt32(values[1]), values[2]);
-                                Projects.Add(newProject);
-                                newProjectIndex = Projects.IndexOf(newProject);
-                                Log.Write("Added Project '" + newProject.name + "'"); break;
-                            case "c":
-                                //Add category to project
-                                //Index, Name, Hours, Minutes
-                                Projects[newProjectIndex].Categories.Add(new ProjectCategory(Convert.ToInt32(values[1]), values[2], Convert.ToDecimal(values[3]) , Convert.ToDecimal(values[4])));
-                                Log.Write("Added new Category '" + values[2] + "'"); break;
-                            case "Activities": writeActivities = true; break; //start writing activities
+                            switch (values[0])
+                            {
+                                case "Projects": writeActivities = false; break; //start writing projects
+                                case "p":
+                                    //Add project
+                                    //Index, Name
+                                    newProject = new Project(Convert.ToInt32(values[1]), values[2]);
+                                    Projects.Add(newProject);
+                                    newProjectIndex = Projects.IndexOf(newProject);
+                                    Log.Write("Added Project '" + newProject.name + "'"); break;
+                                case "c":
+                                    //Add category to project
+                                    //Index, Name, Hours, Minutes
+                                    Projects[newProjectIndex].Categories.Add(new ProjectCategory(Convert.ToInt32(values[1]), values[2], Convert.ToDecimal(values[3]), Convert.ToDecimal(values[4])));
+                                    Log.Write("Added new Category '" + values[2] + "'"); break;
+                                case "Activities": writeActivities = true; break; //start writing activities
+
+                                default: showWarning = true; break;
+                            }
+                        }
+                        else
+                        {
+                            //Add activity
+                            //Date & time, Project, Category, Name, Details
+                            Activities.Add(new Activity(DateTime.Parse(values[0]), values[1], values[2], values[3], values[4]));
+                            Log.Write("Added new activity '" + values[3] + "'");
                         }
                     }
-                    else
+                    if (showWarning)
                     {
-                        //Add activity
-                        //Date & time, Project, Category, Name, Details
-                        Activities.Add(new Activity(DateTime.Parse(values[0]), values[1], values[2], values[3], values[4]));
-                        Log.Write("Added new activity '" + values[3] + "'");
+                        MessageBox.Show("Some data in the file is not recognised. Activities might not be loaded entirely correct", "Warning");
                     }
+                }
+            }
+            catch
+            {
+                //Clear activities, projects and categories
+                Projects.Clear();
+                Activities.Clear();
+                MessageBox.Show("Something went wrong when loading the log, all activities have been reset", "Error");
+            }
+        }
+
+        //MenuItem Overload
+        private void LoadActivities(object sender, EventArgs e)
+        {
+            using (OpenFileDialog file = new OpenFileDialog())
+            {
+                file.Filter = "CSV | *.csv";
+                DialogResult result = file.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    LoadActivities(file.FileName);
                 }
             }
         }

@@ -1,0 +1,15 @@
+C:\Users\Janssen\source\repos\TimeTrackerPjan\TimeTrackerPjan\bin\Release\TimeTrackerPjan.exe.config
+C:\Users\Janssen\source\repos\TimeTrackerPjan\TimeTrackerPjan\bin\Release\TimeTrackerPjan.exe
+C:\Users\Janssen\source\repos\TimeTrackerPjan\TimeTrackerPjan\bin\Release\TimeTrackerPjan.pdb
+C:\Users\Janssen\source\repos\TimeTrackerPjan\TimeTrackerPjan\bin\Release\Newtonsoft.Json.dll
+C:\Users\Janssen\source\repos\TimeTrackerPjan\TimeTrackerPjan\bin\Release\Newtonsoft.Json.xml
+C:\Users\Janssen\source\repos\TimeTrackerPjan\TimeTrackerPjan\obj\Release\TimeTrackerPjan.frmCategoriesPjan.resources
+C:\Users\Janssen\source\repos\TimeTrackerPjan\TimeTrackerPjan\obj\Release\TimeTrackerPjan.OptionsForm.resources
+C:\Users\Janssen\source\repos\TimeTrackerPjan\TimeTrackerPjan\obj\Release\TimeTrackerPjan.frmPopupPjan.resources
+C:\Users\Janssen\source\repos\TimeTrackerPjan\TimeTrackerPjan\obj\Release\TimeTrackerPjan.Projects.resources
+C:\Users\Janssen\source\repos\TimeTrackerPjan\TimeTrackerPjan\obj\Release\TimeTrackerPjan.Properties.Resources.resources
+C:\Users\Janssen\source\repos\TimeTrackerPjan\TimeTrackerPjan\obj\Release\TimeTrackerPjan.SplashScreen.resources
+C:\Users\Janssen\source\repos\TimeTrackerPjan\TimeTrackerPjan\obj\Release\TimeTrackerPjan.csproj.GenerateResource.Cache
+C:\Users\Janssen\source\repos\TimeTrackerPjan\TimeTrackerPjan\obj\Release\TimeTrackerPjan.csproj.CoreCompileInputs.cache
+C:\Users\Janssen\source\repos\TimeTrackerPjan\TimeTrackerPjan\obj\Release\TimeTrackerPjan.exe
+C:\Users\Janssen\source\repos\TimeTrackerPjan\TimeTrackerPjan\obj\Release\TimeTrackerPjan.pdb

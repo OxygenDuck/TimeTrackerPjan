@@ -75,13 +75,13 @@
             // 
             this.tbxActivityPjan.Location = new System.Drawing.Point(12, 70);
             this.tbxActivityPjan.Name = "tbxActivityPjan";
-            this.tbxActivityPjan.Size = new System.Drawing.Size(209, 20);
+            this.tbxActivityPjan.Size = new System.Drawing.Size(278, 20);
             this.tbxActivityPjan.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 205);
+            this.label3.Location = new System.Drawing.Point(12, 170);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(98, 13);
             this.label3.TabIndex = 3;
@@ -89,17 +89,17 @@
             // 
             // rtbDetailsPjan
             // 
-            this.rtbDetailsPjan.Location = new System.Drawing.Point(12, 221);
+            this.rtbDetailsPjan.Location = new System.Drawing.Point(12, 186);
             this.rtbDetailsPjan.Name = "rtbDetailsPjan";
-            this.rtbDetailsPjan.Size = new System.Drawing.Size(209, 96);
+            this.rtbDetailsPjan.Size = new System.Drawing.Size(278, 96);
             this.rtbDetailsPjan.TabIndex = 4;
             this.rtbDetailsPjan.Text = "";
             // 
             // btnSavePjan
             // 
-            this.btnSavePjan.Location = new System.Drawing.Point(14, 13);
+            this.btnSavePjan.Location = new System.Drawing.Point(13, 13);
             this.btnSavePjan.Name = "btnSavePjan";
-            this.btnSavePjan.Size = new System.Drawing.Size(98, 34);
+            this.btnSavePjan.Size = new System.Drawing.Size(130, 34);
             this.btnSavePjan.TabIndex = 5;
             this.btnSavePjan.Text = "Save";
             this.btnSavePjan.UseVisualStyleBackColor = true;
@@ -107,9 +107,9 @@
             // 
             // btnDismissPjan
             // 
-            this.btnDismissPjan.Location = new System.Drawing.Point(14, 53);
+            this.btnDismissPjan.Location = new System.Drawing.Point(161, 13);
             this.btnDismissPjan.Name = "btnDismissPjan";
-            this.btnDismissPjan.Size = new System.Drawing.Size(98, 34);
+            this.btnDismissPjan.Size = new System.Drawing.Size(130, 34);
             this.btnDismissPjan.TabIndex = 6;
             this.btnDismissPjan.Text = "Dismiss";
             this.btnDismissPjan.UseVisualStyleBackColor = true;
@@ -118,7 +118,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 99);
+            this.label4.Location = new System.Drawing.Point(12, 91);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(79, 13);
             this.label4.TabIndex = 7;
@@ -127,7 +127,7 @@
             // cbxProjectsPjan
             // 
             this.cbxProjectsPjan.FormattingEnabled = true;
-            this.cbxProjectsPjan.Location = new System.Drawing.Point(12, 123);
+            this.cbxProjectsPjan.Location = new System.Drawing.Point(12, 107);
             this.cbxProjectsPjan.Name = "cbxProjectsPjan";
             this.cbxProjectsPjan.Size = new System.Drawing.Size(209, 21);
             this.cbxProjectsPjan.TabIndex = 8;
@@ -142,14 +142,14 @@
             this.panel1.Controls.Add(this.btnRepeatPjan);
             this.panel1.Controls.Add(this.btnSavePjan);
             this.panel1.Controls.Add(this.btnDismissPjan);
-            this.panel1.Location = new System.Drawing.Point(-1, 333);
+            this.panel1.Location = new System.Drawing.Point(-1, 288);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(236, 137);
+            this.panel1.Size = new System.Drawing.Size(309, 137);
             this.panel1.TabIndex = 9;
             // 
             // nudDismissCounterPjan
             // 
-            this.nudDismissCounterPjan.Location = new System.Drawing.Point(189, 106);
+            this.nudDismissCounterPjan.Location = new System.Drawing.Point(257, 104);
             this.nudDismissCounterPjan.Name = "nudDismissCounterPjan";
             this.nudDismissCounterPjan.Size = new System.Drawing.Size(34, 20);
             this.nudDismissCounterPjan.TabIndex = 10;
@@ -162,7 +162,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(97, 90);
+            this.label5.Location = new System.Drawing.Point(168, 90);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(126, 13);
             this.label5.TabIndex = 9;
@@ -170,9 +170,9 @@
             // 
             // btnDismissMultiplePjan
             // 
-            this.btnDismissMultiplePjan.Location = new System.Drawing.Point(125, 53);
+            this.btnDismissMultiplePjan.Location = new System.Drawing.Point(161, 53);
             this.btnDismissMultiplePjan.Name = "btnDismissMultiplePjan";
-            this.btnDismissMultiplePjan.Size = new System.Drawing.Size(98, 34);
+            this.btnDismissMultiplePjan.Size = new System.Drawing.Size(130, 34);
             this.btnDismissMultiplePjan.TabIndex = 8;
             this.btnDismissMultiplePjan.Text = "Dismiss Multiple";
             this.btnDismissMultiplePjan.UseVisualStyleBackColor = true;
@@ -180,9 +180,9 @@
             // 
             // btnRepeatPjan
             // 
-            this.btnRepeatPjan.Location = new System.Drawing.Point(125, 13);
+            this.btnRepeatPjan.Location = new System.Drawing.Point(13, 53);
             this.btnRepeatPjan.Name = "btnRepeatPjan";
-            this.btnRepeatPjan.Size = new System.Drawing.Size(98, 34);
+            this.btnRepeatPjan.Size = new System.Drawing.Size(130, 34);
             this.btnRepeatPjan.TabIndex = 7;
             this.btnRepeatPjan.Text = "Repeat Last";
             this.btnRepeatPjan.UseVisualStyleBackColor = true;
@@ -191,7 +191,7 @@
             // cbxCategoryPjan
             // 
             this.cbxCategoryPjan.FormattingEnabled = true;
-            this.cbxCategoryPjan.Location = new System.Drawing.Point(12, 162);
+            this.cbxCategoryPjan.Location = new System.Drawing.Point(12, 146);
             this.cbxCategoryPjan.Name = "cbxCategoryPjan";
             this.cbxCategoryPjan.Size = new System.Drawing.Size(209, 21);
             this.cbxCategoryPjan.TabIndex = 11;
@@ -199,7 +199,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 146);
+            this.label6.Location = new System.Drawing.Point(12, 130);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(128, 13);
             this.label6.TabIndex = 10;
@@ -207,16 +207,16 @@
             // 
             // tbxFilterProjectsPjan
             // 
-            this.tbxFilterProjectsPjan.Location = new System.Drawing.Point(227, 123);
+            this.tbxFilterProjectsPjan.Location = new System.Drawing.Point(227, 108);
             this.tbxFilterProjectsPjan.Name = "tbxFilterProjectsPjan";
-            this.tbxFilterProjectsPjan.Size = new System.Drawing.Size(184, 20);
+            this.tbxFilterProjectsPjan.Size = new System.Drawing.Size(63, 20);
             this.tbxFilterProjectsPjan.TabIndex = 12;
             this.tbxFilterProjectsPjan.TextChanged += new System.EventHandler(this.tbxFilterProjectsPjan_TextChanged);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(227, 107);
+            this.label7.Location = new System.Drawing.Point(224, 92);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(29, 13);
             this.label7.TabIndex = 13;
@@ -224,9 +224,9 @@
             // 
             // tbxFilterCategoriesPjan
             // 
-            this.tbxFilterCategoriesPjan.Location = new System.Drawing.Point(227, 162);
+            this.tbxFilterCategoriesPjan.Location = new System.Drawing.Point(227, 147);
             this.tbxFilterCategoriesPjan.Name = "tbxFilterCategoriesPjan";
-            this.tbxFilterCategoriesPjan.Size = new System.Drawing.Size(184, 20);
+            this.tbxFilterCategoriesPjan.Size = new System.Drawing.Size(63, 20);
             this.tbxFilterCategoriesPjan.TabIndex = 14;
             this.tbxFilterCategoriesPjan.TextChanged += new System.EventHandler(this.tbxFilterCategoriesPjan_TextChanged);
             // 
@@ -234,7 +234,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(479, 469);
+            this.ClientSize = new System.Drawing.Size(305, 422);
             this.Controls.Add(this.tbxFilterCategoriesPjan);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.tbxFilterProjectsPjan);

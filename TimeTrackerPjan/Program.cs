@@ -16,7 +16,7 @@ namespace TimeTrackerPjan
         //Program By Peter Janssen
         //IC17ao.e
         //18 september 2019
-        public const double Version = 0.1;
+        public const double Version = 0.2;
 
         [STAThread]
         static void Main()

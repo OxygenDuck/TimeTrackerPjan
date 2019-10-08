@@ -42,7 +42,7 @@ namespace TimeTrackerPjan
                     break;
                 }
             }
-            if (projectIndex == -1)
+            if (projectIndex == -1 && ProjectName != "")
             {
                 throw new Exception("There is no project with the name " + ProjectName);
             }
@@ -57,7 +57,7 @@ namespace TimeTrackerPjan
                     break;
                 }
             }
-            if (categoryIndex == -1)
+            if (categoryIndex == -1 && ProjectName != "")
             {
                 throw new Exception("There is no category with the name " + CategoryName);
             }
